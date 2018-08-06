@@ -10,7 +10,7 @@
 #include <fstream>
 #include "../util/type.h"
 
-const uint DVECTOR_EXPECTED_FILE_ID = 1;
+const uint DENSE_VECTOR_EXPECTED_FILE_ID = 1;
 const uint FMATRIX_EXPECTED_FILE_ID = 2;
 const uint DMATRIX_EXPECTED_FILE_ID = 1001;
 
@@ -54,9 +54,12 @@ public:
     T operator() (unsigned x, unsigned y) const;
     T* operator() (unsigned x) const;
     
-    void save(std::string filename, bool has_header = false);
+    void save(std::string filename);
     void saveToBinaryFile(std::string filename);
     void print();
+    
+    void load(std::string filename);
+    void loadFromBinaryFile(std::string filename);
     
     T** value;
     std::vector<std::string> col_names;
@@ -171,5 +174,4 @@ public:
 protected:
     uint index;
 };
-
 #endif //MODEL_DEMO_MATRIX_H
